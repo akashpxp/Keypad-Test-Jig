@@ -1,0 +1,613 @@
+
+ #include <LiquidCrystal.h>
+
+#include <Keypad.h>
+
+#define RESET_MTP '~'
+#define map_width 7
+#define LCD_RS 13
+#define LCD_EN 12
+#define LCD_D4 11
+#define LCD_D5 10
+#define LCD_D6 9
+#define LCD_D7 8
+#define lcd_rows 2
+#define lcd_columns 16
+
+LiquidCrystal lcd(LCD_RS, LCD_EN, LCD_D4, LCD_D5, LCD_D6, LCD_D7); // Create the lcd object
+const byte ROWS = 4; //four rows
+const byte COLS = 4; //three columns
+char keys[ROWS][COLS] = {
+  {'H', 'T', 'l', '_'},
+  {'D', 'P', 'd', '!'},
+  {'A', 'M', 'u', 'o'},
+  {'1', 'J', 'W', 'r'}
+};
+int g=0;
+byte rowPins[ROWS] = {0, A5, 2, 3}; //connect to the row pinouts of the keypad
+byte colPins[COLS] = {4, 5, 6, 7}; //connect to the column pinouts of the keypad
+
+Keypad keypad = Keypad( makeKeymap(keys), rowPins, colPins, ROWS, COLS );
+
+void setup() {
+
+  
+//  lcd.begin(lcd_columns, lcd_rows);
+  lcd.blink();
+  lcd.print("Sohum Innovation Labs");
+  delay(1500);
+  lcd.clear();
+  lcd.print("Keypad Test Jig");
+  delay(1500);
+  lcd.clear();
+
+}
+int flag=0;
+void loop() {
+
+  lcd.clear();
+  lcd.print("Checking LEDs....");
+  delay(1000);
+  lcd.clear();
+  Led();
+  lcd.clear();
+
+  lcd.print("Starting Test...");
+  delay(2000);
+  lcd.clear();
+  lcd.print(F("Enter 1"));
+  unsigned long e1=millis();
+  while(millis()<e1 +10000)
+  {
+      char key = keypad.getKey();
+      if (key != NO_KEY)
+  {
+    
+    if ( key == '1')
+    {
+      flag++;
+      lcd.setCursor(0,1);
+    lcd.print("One Passed");
+    delay(1000);
+  }
+  else 
+  {
+    lcd.clear();
+    lcd.print("Wrong Key");
+    delay(1500);
+    lcd.clear();
+    lcd.print("Restarting");
+    delay(1000);
+    return;
+  }
+  break;
+}
+ }
+
+ lcd.clear();
+  lcd.print(F("Enter A"));
+   unsigned long e2=millis();
+  while(millis()<e2+10000)
+  {
+  char key1 = keypad.getKey();
+  if (key1 != NO_KEY)
+  {
+    if ( key1 == 'A')
+    {
+      flag++;
+      lcd.setCursor(0,1);
+    lcd.print("A Passed");
+    delay(1000);
+  }
+   else 
+  {
+    lcd.clear();
+    lcd.print("Wrong Key");
+    delay(1500);
+    lcd.clear();
+    lcd.print("Restarting");
+    delay(1000);
+    return;
+  }
+  break;
+}
+  }
+lcd.clear();
+  lcd.print(F("Enter D"));
+   unsigned long e3=millis();
+  while(millis()<e3+10000)
+  {
+  char key2 = keypad.getKey();
+  if (key2 != NO_KEY)
+  {
+    if ( key2 == 'D')
+    {
+      flag++;
+      lcd.setCursor(0,1);
+    lcd.print("D Passed");
+    delay(1000);
+  }
+   else 
+  {
+    lcd.clear();
+    lcd.print("Wrong Key");
+    delay(1500);
+    lcd.clear();
+    lcd.print("Restarting");
+    delay(1000);
+    return;
+}
+break;
+  }
+  }
+lcd.clear();
+  lcd.print(F("Enter G"));
+   unsigned long e4=millis();
+  while(millis()<e4+10000)
+  {
+  char key3 = keypad.getKey();
+  if (key3 != NO_KEY)
+  {
+    if ( key3 == 'H')
+    {
+      flag++;
+      lcd.setCursor(0,1);
+    lcd.print("G Passed");
+    delay(1000);
+  }
+   else 
+  {
+    lcd.clear();
+    lcd.print("Wrong Key");
+    delay(1500);
+        lcd.clear();
+
+    lcd.print("Restarting");
+    delay(1000);
+    return;
+  }
+  break;
+}
+  }
+lcd.clear();
+  lcd.print(F("Enter J"));
+   unsigned long e5=millis();
+  while(millis()<e5+10000)
+  {
+  char key4 = keypad.getKey();
+  if (key4 != NO_KEY)
+  {
+    if ( key4 == 'J')
+    {
+      flag++;
+      lcd.setCursor(0,1);
+    lcd.print("J Passed");
+    delay(1000);
+  }
+   else 
+  {
+    lcd.clear();
+    lcd.print("Wrong Key");
+    delay(1500);
+    lcd.clear();
+    lcd.print("Restarting");
+    delay(1000);
+    return;
+  }
+  break;
+}
+  }
+lcd.clear();
+  lcd.print(F("Enter M"));
+   unsigned long e6=millis();
+  while(millis()<e6+10000)
+  {
+  char key5 = keypad.getKey();
+  if (key5 != NO_KEY)
+  {
+    if ( key5 == 'M')
+    {
+      flag++;
+      lcd.setCursor(0,1);
+    lcd.print("M Passed");
+    delay(1000);
+  }
+   else 
+  {
+    lcd.clear();
+    lcd.print("Wrong Key");
+    delay(1500);
+    lcd.clear();
+    lcd.print("Restarting");
+    delay(1000);
+    return;
+}
+break;
+  }
+  }
+lcd.clear();
+  lcd.print(F("Enter P"));
+   unsigned long e7=millis();
+  while(millis()<e7+10000)
+  {
+  char key6 = keypad.getKey();
+  if (key6 != NO_KEY)
+  {
+    if ( key6 == 'P')
+    {
+      flag++;
+      lcd.setCursor(0,1);
+    lcd.print("P Passed");
+    delay(1000);
+  }
+   else 
+  {
+    lcd.clear();
+    lcd.print("Wrong Key");
+    delay(1500);
+    lcd.clear();
+    lcd.print("Restarting");
+    delay(1000);
+    return;
+  }
+  break;
+}
+  }
+lcd.clear();
+  lcd.print(F("Enter T"));
+   unsigned long e8=millis();
+  while(millis()<e8+10000)
+  {
+  char key7 = keypad.getKey();
+  if (key7 != NO_KEY)
+  {
+    if ( key7 == 'T')
+    {
+      flag++;
+      lcd.setCursor(0,1);
+    lcd.print("T Passed");
+    delay(1000);
+  }
+   else 
+  {
+   lcd.clear();
+    lcd.print("Wrong Key");
+    delay(1500);
+    lcd.clear();
+    lcd.print("Restarting");
+    delay(1000);
+    return;
+  }
+  break;
+}
+  }
+lcd.clear();
+  lcd.print(F("Enter W"));
+   unsigned long e9=millis();
+  while(millis()<e9+10000)
+  {
+  char key8 = keypad.getKey();
+  if (key8 != NO_KEY)
+  {
+    if ( key8 == 'W')
+    {
+      flag++;
+      lcd.setCursor(0,1);
+    lcd.print("W Passed");
+    delay(1000);
+  }
+   else 
+  {
+    lcd.clear();
+    lcd.print("Wrong Key");
+    delay(1500);
+    lcd.clear();
+    lcd.print("Restarting");
+    delay(1000);
+    return;
+  }
+  break;
+}
+  }
+lcd.clear();
+  lcd.print(F("Enter UP"));
+   unsigned long e10=millis();
+  while(millis()<e10+10000)
+  {
+  char key9 = keypad.getKey();
+  if (key9 != NO_KEY)
+  {
+    if ( key9 == 'u')
+    {
+      flag++;
+      lcd.setCursor(0,1);
+    lcd.print("UP Passed");
+    delay(1000);
+  }
+   else 
+  {
+    lcd.clear();
+    lcd.print("Wrong Key");
+    delay(1500);
+    lcd.clear();
+    lcd.print("Restarting");
+    delay(1000);
+    return;
+  }
+  break;
+}
+  }
+lcd.clear();
+  lcd.print(F("Enter Down"));
+   unsigned long e11=millis();
+  while(millis()<e11+10000)
+  {
+  char key10 = keypad.getKey();
+  if (key10 != NO_KEY)
+  {
+    if ( key10 == 'd')
+    {
+      flag++;
+      lcd.setCursor(0,1);
+    lcd.print("Down Passed");
+    delay(1000);
+  }
+   else 
+  {
+   lcd.clear();
+    lcd.print("Wrong Key");
+    delay(1500);
+    lcd.clear();
+    lcd.print("Restarting");
+    delay(1000);
+    return;
+  }
+  break;
+}
+  }
+lcd.clear();
+  lcd.print(F("Enter Left"));
+   unsigned long e12=millis();
+  while(millis()<e12+10000)
+  {
+  char key11 = keypad.getKey();
+  if (key11 != NO_KEY)
+  {
+    if ( key11 == 'l')
+    {
+      flag++;
+      lcd.setCursor(0,1);
+    lcd.print("Left Passed");
+    delay(1000);
+  }
+   else 
+  {
+    lcd.clear();
+    lcd.print("Wrong Key");
+    delay(1500);
+    lcd.clear();
+    lcd.print("Restarting");
+    delay(1000);
+    return;
+  }
+  break;
+}
+  }
+lcd.clear();
+  lcd.print(F("Enter Right"));
+   unsigned long e13=millis();
+  while(millis()<e13+10000)
+  {
+  char key12 = keypad.getKey();
+  if (key12 != NO_KEY)
+  {
+    if ( key12 == 'r')
+    {
+      flag++;
+      lcd.setCursor(0,1);
+    lcd.print("Right Passed");
+    delay(1000);
+  }
+   else 
+  {
+   lcd.clear();
+    lcd.print("Wrong Key");
+    delay(1500);
+    lcd.clear();
+    lcd.print("Restarting");
+    delay(1000);
+    return;
+  }
+  break;
+}
+  }
+lcd.clear();
+  lcd.print(F("Enter Space"));
+   unsigned long e14=millis();
+  while(millis()<e14+10000)
+  {
+  char key13 = keypad.getKey();
+  if (key13 != NO_KEY)
+  {
+    if ( key13 == '_')
+    {
+      flag++;
+      lcd.setCursor(0,1);
+    lcd.print("Space Passed");
+    delay(1000);
+  }
+   else 
+  {
+   lcd.clear();
+    lcd.print("Wrong Key");
+    delay(1500);
+    lcd.clear();
+    lcd.print("Restarting");
+    delay(1000);
+    return;
+  }
+  break;
+}
+  }
+lcd.clear();
+  lcd.print(F("Enter Delete"));
+   unsigned long e15=millis();
+  while(millis()<e15+10000)
+  {
+  char key14 = keypad.getKey();
+  if (key14 != NO_KEY)
+  {
+    if ( key14 == '!')
+    {
+      flag++;
+      lcd.setCursor(0,1);
+    lcd.print("Delete Passed");
+    delay(1000);
+  }
+   else 
+  {
+   lcd.clear();
+    lcd.print("Wrong Key");
+    delay(1500);
+    lcd.clear();
+    lcd.print("Restarting");
+    delay(1000);
+    return;
+  }
+  break;
+}
+  }
+lcd.clear();
+  lcd.print(F("Enter OK"));
+   unsigned long e16=millis();
+  while(millis()<e16+10000)
+  {
+  char key15 = keypad.getKey();
+  if (key15 != NO_KEY)
+  {
+    if ( key15 == 'o')
+    {
+      flag++;
+      lcd.setCursor(0,1);
+    lcd.print("OK Passed");
+    delay(1000);
+  }
+   else 
+  {
+   lcd.clear();
+    lcd.print("Wrong Key");
+    delay(1500);
+    lcd.clear();
+    lcd.print("Restarting");
+    delay(1000);
+    return;
+  }
+  break;
+}
+  }
+
+lcd.clear();
+if ( flag==16 )
+{
+  lcd.print("Test Passed");
+  delay(2000);
+  lcd.clear();
+  flag=0;
+  lcd.print("Restarting");
+  delay(2000);
+  lcd.clear();
+
+}
+else 
+{
+    lcd.print("Test Failed");
+    delay(2000);
+    flag=0;
+    lcd.clear();
+    lcd.print("Restarting");
+    delay(2000);
+    lcd.clear();
+
+}
+    }
+void Led()
+{
+  
+//  lcd.clear();
+//  lcd.print(buttonState4);
+//   delay(2000);
+//  lcd.clear();
+
+   int buttonState1 = analogRead(A2);      
+   int buttonState2 = analogRead(A4);  
+   int buttonState3 = analogRead(A1);
+   
+      float voltage1=buttonState1*(5.0/1023.0);
+      float voltage2=buttonState2*(5.0/1023.0);
+      float voltage3=buttonState3*(5.0/1023.0);
+      if (voltage1<4)
+      {
+        lcd.clear();
+        lcd.print("Power Led: Pass");
+        delay(2000);
+      }
+      else if (voltage1>=4)
+      {
+        lcd.clear();
+        lcd.print("Power Led: Fail");
+        delay(2000);
+      }
+      if (voltage2>0)
+      {
+        lcd.clear();
+        lcd.print("Charge Ind: Pass");
+        delay(2000);
+      }
+      else if (voltage2<=0)
+      {
+        lcd.clear();
+        lcd.print("Charge Ind: Fail");
+        delay(2000);
+      }
+       if (voltage3>0)
+      {
+        lcd.clear();
+        lcd.print("Error Ind: Pass");
+        delay(2000);
+      }
+      else if (voltage3<=0)
+      {
+        lcd.clear();
+        lcd.print("Error Ind: Fail");
+        delay(2000);
+      }
+      
+  lcd.clear();
+  lcd.print("POW Button test");
+  delay(1500);
+  lcd.clear();
+  lcd.print("Press the POW");
+  int d=millis();
+  int buttonState4=1;
+while (millis()<d+5000)
+{
+  buttonState4=digitalRead(A0);
+  if (buttonState4==0)
+{
+  lcd.clear();
+  lcd.print("Power btn: Pass");
+  delay(2000);
+  lcd.clear();
+break;
+}
+}
+if (buttonState4==1)
+{
+  lcd.clear();
+  lcd.print("Power btn: Fail");
+  delay(2000);
+  lcd.clear();
+
+}
+  
+}
